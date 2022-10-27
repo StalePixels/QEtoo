@@ -24,11 +24,12 @@ version was ported to NextZXOS using z88dk by D. 'Xalior' Rimron-Soutter in a
 12hr sprint back in the days when there was no "on device" text editor available
 for the Next -- making it the first native text-editor for the Spectrum Next.
 
-The first version of this document was written with QE on a Spectrum Next, and commited to https://github.com/StalePixels/CPMISH - the latest version is at
-https://github.com/StalePixels/QEtoo - the canonical home of QE for NextZXOS.  The latest
-stable version of QE will always be included in Next/System, which can be found at
-https://gitlab.com/thesmog358/tbblue - please remember to check your Next's system and
-core are up-to-date before reporting any bugs with QE.
+The first version of this document was written with QE on a Spectrum Next, and 
+commited to https://github.com/StalePixels/CPMISH - the latest version is at
+https://github.com/StalePixels/QEtoo - the canonical home of QE for NextZXOS.  
+The latest stable version of QE will always be included in Next/System, which 
+can be found at https://gitlab.com/thesmog358/tbblue - please remember to check
+your Next's system and core are up-to-date before reporting any bugs with QE.
 
 @-------------------------------------------------------------------------------
 @NODE INDEX
@@ -43,7 +44,7 @@ core are up-to-date before reporting any bugs with QE.
 
 @-------------------------------------------------------------------------------
 @NODE LOAD
-@NEXT MAIN
+@NEXT BASICS
 @{r}QE Manual
 @{c}@{h1}Loading (and Exiting) QE
 
@@ -104,7 +105,7 @@ When you have finished editing a new file you switch back to "command mode" (via
 the @{b}edit@{ub} key again, and type @{b}:w FILENAME@{ub} which will create a file
 on the SD card, in the current directory, with that name, containing your changes.
 
-Once the file has a name or already had a name because you loaded a file (with @{b}r@{ub})
+Once the file is named or already had a name because you loaded a file (with @{b}r@{ub})
 you can save the changes to the same filename with @{b}:w@{ub} or save and quit with
 @{b}:wq@{ub}.
 
@@ -112,6 +113,7 @@ QE supports several more advanced editing methods (overwrite vs insert, line
 navigation, etc.) all noted in the @{"next chapter" LINK KEYS}.
 @-------------------------------------------------------------------------------
 @NODE KEYS
+@NEXT ERRORS
 @{r}QE Manual
 @{c}@{h1}Key bindings
 
@@ -133,7 +135,7 @@ navigation, etc.) all noted in the @{"next chapter" LINK KEYS}.
 @{b}d@{ub} Enter DELETE mode
 @{b}Z@{ub} Enter EXIT mode
 
-@{b}:@{ub} Enter COLON mode whe already in COMMAND mode.
+@{b}:@{ub} Use COLON mode whe already in COMMAND mode.
 @-------------------------------------------------------------------------------
 
 @NODE ERRORS
