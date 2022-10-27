@@ -1,17 +1,127 @@
 @TITLE QE
 @AUTHOR D. Rimron-Soutter
-@VERSION 11h2
-@COPYRIGHT Copyright (c)2020 D. Rimron, 2019 David Given
-@DATE 2020-10-13
-@---
+@VERSION 12H3
+@COPYRIGHT Copyright (c)2020-2022 D. Rimron, 2019 David Given
+@DATE 2022-10-27
+
+@INDEX INDEX
+@-------------------------------------------------------------------------------
+@node INTRODUCTION
+@next INDEX
+
+@{c}QE Manual
+
+@{c}Version 12H3
+
+@{c}Written by D. 'Xalior' Rimron-Soutter
+
+@{h1}Overview
+
+QE is a modal text editor heavily inspired/influenced by Vi on *nix platforms.
+
+It was originally written as part of David Given's CPMish, using ACK. This 
+version was ported to NextZXOS using z88dk by D. 'Xalior' Rimron-Soutter in a
+12hr sprint back in the days when there was no "on device" text editor available
+for the Next -- making it the first native text-editor for the Spectrum Next.
+
+The first version of this document was written with QE on a Spectrum Next, and commited to https://github.com/StalePixels/CPMISH - the latest version is at
+https://github.com/StalePixels/QEtoo - the canonical home of QE for NextZXOS.  The latest
+stable version of QE will always be included in Next/System, which can be found at
+https://gitlab.com/thesmog358/tbblue - please remember to check your Next's system and
+core are up-to-date before reporting any bugs with QE.
+
+@-------------------------------------------------------------------------------
+@NODE INDEX
+@NEXT LOAD
+@{r}QE Manual
+@{c}@{h1}QE Documentation Index
+
+ @{" Loading (and Exiting) QE " LINK LOAD}
+ @{" Getting Started " LINK BASICS}
+ @{" Key Bindings " LINK KEYS}
+ @{" Error Codes " LINK ERRORS}
+
+@-------------------------------------------------------------------------------
+@NODE LOAD
+@NEXT MAIN
+@{r}QE Manual
+@{c}@{h1}Loading (and Exiting) QE
+
+QE can be started by typing @{b}.qe@{ub} on the commandline - this command is not
+case sensitive.  QE can also be launched from within a NextBASIC script the same
+way.
+
+You can also have QE open with a textfile of your choice by giving it the path
+(relative, or absolute) to the file you want opened on startup. An example of
+this would be @{b}.qe /nextzxos/browser.cfg@{ub}.  The maximum length for the
+filename and path is 128 characters.
+
+     You can use QE like this on any "plain text" based file format.  That 
+     is to say QE cannot be used to edit non-text based files, such as 
+     NextBASIC source code, etc.  If you really do find yourself in need of 
+     using QE to edit .BAS files this can be achieved with the assistance
+     of the .BAS2TXT and .TXT2BAS commands which are also part of the 
+     NextZXOS default distribution.
+
+If you've started QE by accident, have made no changes to a file, or want to 
+quickly save a modified file and exit while in command mode (see the 
+@{"the next chapter" LINK BASICS} for more on modes) you can press Z (must be
+capital) twice.  If you're not in command mode, press @{b}EDIT@{ub} to switch
+into it - QE starts in command mode by default and reminds you of this command
+on the splashscreen if you've not loaded a textfile into the buffer at startup
+via the command line.
+
+If you have made changes to the current file you do not wish to save the command
+you need is @{b}:q!@{ub} - this, again, must be entered in command mode.
+
+@-------------------------------------------------------------------------------
+@NODE BASICS
+@NEXT KEYS
+@{c}@{h1}Getting Started
+
+If you're have any experience with working in a modal editor such as Vi then QE,
+and its keybindings, should be refreshingly familiar, for those who have never
+used a modal editor there are some basic concepts that you initially need to 
+understand.
+
+QE has three modes - command mode, insert mode and 'colon' mode. QE always 
+starts up in the command mode and you change between command and edit modes with
+the @{b}EDIT@{ub} key. You enter "colon mode" from command mode by pressing @{b}:@{ub},
+from here you can save :w, load :r, and other file operations
+
+The "modality" of QE permits a full suite of functions even on the original devkits
+using the reproduction 48k keyboards and cases.
+
+When in edit mode you can't perform most of the functions listed in the
+@{"key bindings section" LINK KEYS}, since they are commands and, therefore, require QE
+to be in command mode - this includes document navigation with the cursor keys.
+
+The most common way to switch from "command mode" to editing it by pressing @{b}i@{ub}
+when at the location you wish to insert text - for a brand new document this is
+likely the first key you would press.
+
+When you have finished editing a new file you switch back to "command mode" (via
+the @{b}edit@{ub} key again, and type @{b}:w FILENAME@{ub} which will create a file
+on the SD card, in the current directory, with that name, containing your changes.
+
+Once the file has a name or already had a name because you loaded a file (with @{b}r@{ub})
+you can save the changes to the same filename with @{b}:w@{ub} or save and quit with
+@{b}:wq@{ub}.
+
+QE supports several more advanced editing methods (overwrite vs insert, line
+navigation, etc.) all noted in the @{"next chapter" LINK KEYS}.
+@-------------------------------------------------------------------------------
 @NODE KEYS
-@{b}EDIT{ub} Toggle Modes between COMMAND and EDIT
+@{r}QE Manual
+@{c}@{h1}Key bindings
+
+@{b}EDIT@{ub} Toggle Modes between COMMAND and EDIT
 @{b}hjkl@{ub} or @{b}CURSOR KEYS@{ub} Navigate document when in EDIT mode
 @{b}^@{ub} Jump to START of Line
 @{b}$@{ub} Jump to END of Line
-@{b}i@{ub} Insert Text
-@{b}x@{ub} Delete CHAR under
-@{b}A@{ub} APPEND text at current location
+@{b}i@{ub} Insert Text at cursor location
+@{b}x@{ub} Delete CHAR at cursor location
+@{b}A@{ub} APPEND text at current cursor location
 @{b}J@{ub} JOIN text
 @{b}c@{ub} CHANGE (overwrite) text
 @{b}G@{ub} GOTO line
@@ -21,13 +131,16 @@
 @{b}O@{ub} open ABOVE
 
 @{b}d@{ub} Enter DELETE mode
-@{b}z@{ub} Enter EXIT mode
-@{b}:@{ub} Enter COLON mode
+@{b}Z@{ub} Enter EXIT mode
 
-The first version of this document was written with QE on a Spectrum Next
-The source code to this version of QE can be found on github.com/StalePixels/CPMISH
+@{b}:@{ub} Enter COLON mode whe already in COMMAND mode.
+@-------------------------------------------------------------------------------
 
-ESXDOS error codes as reported by NextZXOS
+@NODE ERRORS
+@{r}QE Manual
+@{c}@{h1}Error Codes
+
+QE's errors-codes are mostly the same as those used by ESXDOS, these have been listed below for your convenience.
 
 1 O.K. ESXDOS
 2 Nonsense in ESXDOS
