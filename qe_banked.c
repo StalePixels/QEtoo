@@ -111,6 +111,18 @@ void banked_init() {
     } while ((i = i + 2) != 0);
 
     zx_border(INK_BLACK);
+    /*
+     * 0x6B (107) => Tilemap Control
+     * (R/W)
+     *   bit 7 = 1 Enable the tilemap (soft reset = 0)
+     *   bit 6 = 0 for 40x32, 1 for 80x32 (soft reset = 0)
+     *   bit 5 = Eliminate the attribute entry in the tilemap (soft reset = 0)
+     *   bit 4 = Palette select (soft reset = 0)
+     *   bit 3 = Select textmode (soft reset = 0)
+     *   bit 2 = Reserved, must be 0
+     *   bit 1 = Activate 512 tile mode (soft reset = 0)
+     *   bit 0 = Force tilemap on top of ULA (soft reset = 0)
+     */
     ZXN_NEXTREG(0x6b, /*0b11001000*/ 0xC8);                     // enable tilemap, 80x32 mode, 1bit palette
 
     zx_cls(PAPER_MAGENTA|BRIGHT);
