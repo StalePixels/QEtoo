@@ -22,6 +22,6 @@ Building is handled via the Makefile - not part of the usual C/PMish way of doin
 things, and this project was last successfully built with z88dk nightly-20200412.
 
 If you want to help contribute to a bigger, more powerful editor, maybe consider
-https://github.com/StalePixels/EVIL/ which is a fork of QE, with plans to add
+https://github.com/StalePixels/EviL/ which is a fork of QE, with plans to add
 more Vi Adjacent Features, and Spectrum Next specific hardware enhancements.
 
