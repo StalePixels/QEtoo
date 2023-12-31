@@ -19,7 +19,8 @@ bugfixes for the NextZXOS shim version of libcuss (the ESXCUSS folder) are welco
 here.
 
 Building is handled via the Makefile - not part of the usual C/PMish way of doing
-things, and this project was last successfully built with z88dk nightly-20200412.
+things, and this project was last successfully built with z88dk 2.3 
+(v22110-51889e5300-20231220) by @mquin. 
 
 If you want to help contribute to a bigger, more powerful editor, maybe consider
 https://github.com/StalePixels/EviL/ which is a fork of QE, with plans to add
